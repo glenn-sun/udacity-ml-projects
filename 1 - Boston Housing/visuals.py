@@ -107,7 +107,8 @@ def PredictTrials(X, y, fitter, data):
     # Store the predicted prices
     prices = []
 
-    for k in range(10):
+    num_trials = 25
+    for k in range(num_trials):
         # Split the data
         X_train, X_test, y_train, y_test = train_test_split(X, y, \
             test_size = 0.2, random_state = k)
@@ -120,9 +121,18 @@ def PredictTrials(X, y, fitter, data):
         prices.append(pred)
         
         # Result
-        print "Trial {}: ${:,.2f}".format(k+1, pred)
+        if k < 10:
+            print "Trial {}: ${:,.2f}".format(k+1, pred)
+        if k == 10:
+            print "Statements truncated here ({} trials completed)".format(num_trials)
 
     # Display price range
     print "\nRange in prices: ${:,.2f}".format(max(prices) - min(prices))
-    print "Mean of prices:", np.mean(prices)
-    print "Standard deviation of prices:", np.std(prices)
+    print "Mean of prices: ${:,.2f}".format(np.mean(prices))
+    print "Standard deviation of prices: ${:,.2f}".format(np.std(prices))
+
+    print "Plot of the trials:"
+
+    prices = [float(n) / 1000 for n in prices]
+    pl.hist(prices, bins=20, range=(200, 600))
+    pl.ylabel('Price (in thousands)')
