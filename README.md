@@ -1,4 +1,4 @@
-# udacity-ml-projects
-Solutions to every project from Udacity's Machine Learning Nanodegree. 
+# Udacity ML Projects
+Solutions to every project from Udacity's Machine Learning Nanodegree, excluding the final project (which may be coming soon).
 
-Still a work in progress. If you're taking the course, don't copy. Please.
+For anyone wondering why all the commits were made by a user called yadec, that's my other account. I transferred this repository over.
